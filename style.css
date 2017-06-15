@@ -1,0 +1,46 @@
+#gameTitle {
+	text-align: center;
+	height: 50px;
+	background-color: green;
+	padding-top: 5px;
+	color: white;
+}
+#rules {
+	text-align: center;
+	height: 25px;
+	background-color: aqua;
+	margin-top: 5px;
+}
+#playerReg {
+	float: left;
+	height: 150px;
+	width: 150px;
+	border: solid;
+	border-color: red;
+	margin: 10px;
+}
+.register {
+	margin: 10px;
+}
+#playerBoard {
+	float: left;
+	height: 230px;
+	width: 520px;
+	background-color: lightblue;
+	margin-top: 10px;
+}
+.playerScores {
+	float: left;
+	height: 200px;
+	width: 150px;
+	background-color: yellow;
+}
+#player1, #player2, #player3 {
+	margin: 10px 10px 10px 10px;
+}
+.name, .roundTotal, .gameTotal {
+	height: 30px;
+	width: 125px;
+	background-color: red;
+	margin: 10px;
+}
