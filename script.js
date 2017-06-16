@@ -6,15 +6,14 @@ $(document).ready(function() {
         vowels: [ "A", "E", "I", "O", "U" ],
         consonants: [ "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z" ],
         wheel_1: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "2500", "Lose a Turn", "1000000"],
-        wheel_2: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "3500", "Lose a Turn", "1000000"],
-        wheel_3: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "5000", "Lose a Turn", "1000000"],
+        // wheel_2: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "3500", "Lose a Turn", "1000000"],
+        // wheel_3: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "5000", "Lose a Turn", "1000000"],
         myPlayers: [],
         phrase: [ "Casablanca", "The Matrix", "Shawkshank Redemption", "Toy Story", "Fight Club", "Inception", "The Dark Knight", "City of God", "The_Departed", "Seven Samurai" ],
         // ======= Initialize App =========
         Initialize: function() {
             console.log("== Initialize ==");
             this.activateUserInterface();
-            this.loadGameBoard();
         },
         // ====== Enable User Interaction =======
         activateUserInterface: function() {
@@ -37,7 +36,8 @@ $(document).ready(function() {
             var nextPlayer = new this.Player(playerName);
             this.myPlayers.push(nextPlayer);
             console.log(this.myPlayers[this.myPlayers.length - 1]);
-            // createPlayerCard();
+            this.createPlayerCard();
+            this.activateStartBTN();
         },
         // ======= Player Constructor =======
         Player: function(playerName) {
@@ -47,21 +47,27 @@ $(document).ready(function() {
         createPlayerCard: function() {
             console.log("== createPlayerCard ==");
             var playerBoard = $('#playerBoard');
-            for (var i = 0; i < myPlayers.length; i++) {
-                nextPlayer = myPlayers[i];
+            for (var i = 0; i < this.myPlayers.length; i++) {
+                nextPlayer = this.myPlayers[i];
                 console.log("nextPlayer:", nextPlayer);
-            }
-
+                var playerBox = $("<div>", {id: "player_" + i, class: "players"});
+                $('#playerBoard').append(playerBox);
+                $('#playerBoard').children().last().html(nextPlayer);
+            };
         },
         // ======= Enable Game Start =======
         activateStartBTN: function() {
-            // this.loadPlayerBoard();
-            // this.loadGameBoard();
+            console.log("== activateStartBTN ==");
+            var self = this;
+            $('#startBTN').on('click', function(e){
+                console.log('-- startBTN --');
+            self.loadGameBoard();
             // this.activateGameTimer();
             // this.activateNewGameBTN();
+            });
         },
         // ===== Enable Game Timer =====
-        activateGameTimer:  function() {
+        activateGameTimer: function() {
         },
         // Enable New Game
         activateNewGameBTN: function() {
@@ -69,8 +75,7 @@ $(document).ready(function() {
         // ===== Load Game Board =====
         loadGameBoard: function() {
             console.log("== loadGameBoard ==");
-            var self = this;
-            var gameBoard = $('#gameBoard');
+            // var gameBoard = $('#gameBoard');
             var activePhrase = this.phrase[0];
             for (var i = 0; i < activePhrase.length; i++) {
                 nextLetter = activePhrase[i];
@@ -117,6 +122,10 @@ $(document).ready(function() {
         },
         // Enable Player Guess Field
         activatePlayerGuess: function() {
+            // activateAnswerBTN();
+        },
+        // Enable Answer Button
+        activateAnswerBTN: function() {
         },
         // Display Player Guess
         displayGuess: function() {

@@ -1,3 +1,4 @@
+/*======  Game Logo ======*/
 #gameTitle {
 	text-align: center;
 	height: 50px;
@@ -5,31 +6,43 @@
 	padding-top: 5px;
 	color: white;
 }
+/*===== Link to Rules ======*/
 #rules {
 	text-align: center;
 	height: 25px;
 	background-color: aqua;
 	margin-top: 5px;
 }
+/*======= Player Registration =======*/
 #playerReg {
-	float: left;
+	/*float: left;*/
 	height: 150px;
 	width: 150px;
 	border: solid;
 	border-color: red;
 	margin: 10px;
+	text-align: center;
 }
 .register {
 	margin: 10px;
 }
+/*======= Player Score Cards =======*/
 #playerBoard {
-	float: left;
+	/*float: left;*/
 	height: 230px;
 	width: 520px;
 	background-color: lightblue;
 	margin-top: 10px;
 }
-.playerScores {
+.players {
+	/*float: left;*/
+	height: 50px;
+	width: 100px;
+	background-color: yellow;
+	color: black;
+	margin: 10px;
+}
+/*.playerScores {
 	float: left;
 	height: 200px;
 	width: 150px;
@@ -37,19 +50,38 @@
 }
 #player1, #player2, #player3 {
 	margin: 10px 10px 10px 10px;
-}
+}*/
 .name, .roundTotal, .gameTotal {
 	height: 30px;
 	width: 125px;
 	background-color: red;
 	margin: 10px;
 }
+/*======= Buttons =======*/
 #start {
-	margin-top: 100px;
-	height: 30px;
-	width: 70px;
-	background-color: yellow;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
+
+/*======  Game Info =======*/
+#gameInfo {
+	height: 100px;
+	width: 500px;
+	background-color: navy;
+}
+#category {
+	height: 50px;
+	width: 150px;
+	color: white;
+}
+#timer {
+	height: 50px;
+	width: 150px;
+	background-color: red;
+	margin: 2px;
+}
+
+/*======= GameBoard =======*/
 .letters {
 	float: left;
 	height: 100px;
@@ -64,9 +96,14 @@
 #gameBoard {
 	/*display: flex;*/
 	background-color: aqua;
-	height: 500px;
-	width: 500px;
+	height: 350px;
+	width: 1000px;
 	/*flex-wrap: wrap;*/
 	margin-top: 10px;
-
+}
+#guessBox {
+	height: 50px;
+	width: 200px;
+	background-color: grey;
+	margin: 10px;
 }

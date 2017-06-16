@@ -21,6 +21,7 @@
 				<input type="text" id="playerName" class="register" placeholder="Player Name">
 				<br>
 				<input type="button" id="registerBTN" class="register" name="register" value="Register">
+				<br>
 				<input type="button" id="clearBTN" name="clear" value="Clear">
 			</form>
 		</div>
@@ -45,7 +46,7 @@
 
 		<div id="gameInfo">
 			<div id="start">
-				<input type="button" name="start" value="Game On">
+				<input type="button" id="startBTN" name="start" value="Start Game">
 			</div>
 			<div id="category">Movies</div>
 			<div id="timer"></div>
@@ -53,7 +54,7 @@
 
 		<div id="gameButtons">
 			<div id="phase1">
-				<input type="button" name="spin" id="spin" value="Prize">
+				<input type="button" name="spin" id="spin" value="Spin">
 				<input type="button" name="solve" id="solve" value="Solve the Puzzle">
 			</div>
 			<div id="phase2">
@@ -65,9 +66,10 @@
 
 		<div id="gameBoard">
 			<div id="board"></div>
-			<div id="guessBox">
-				<input type="text" id="guessText" placeholder="Enter Answer">
-			</div>
+		</div>
+
+		<div id="guessBox">
+			<input type="text" id="guessText" placeholder="Enter Answer">
 		</div>
 
 
