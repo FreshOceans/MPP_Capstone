@@ -8,35 +8,85 @@ $(document).ready(function() {
         wheel_1: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "2500", "Lose a Turn", "1000000"],
         wheel_2: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "3500", "Lose a Turn", "1000000"],
         wheel_3: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "5000", "Lose a Turn", "1000000"],
-
-        // Initialize App
+        myPlayers: [],
+        phrase: [ "Casablanca", "The Matrix", "Shawkshank Redemption", "Toy Story", "Fight Club", "Inception", "The Dark Knight", "City of God", "The_Departed", "Seven Samurai" ],
+        // ======= Initialize App =========
         Initialize: function() {
-            clearPlayerReg();
+            console.log("== Initialize ==");
+            this.activateUserInterface();
+            this.loadGameBoard();
         },
-        // Enable Player Registration
-        activateRegistrationBTN: function() {
+        // ====== Enable User Interaction =======
+        activateUserInterface: function() {
+            console.log("== activateUserInterface ");
+            var self = this;
+            $('#registerBTN').on('click', function(e){
+                console.log('-- registerBTN --');
+                self.addNewPlayer();
+            });
+            $('#clearBTN').on('click', function(e){
+                console.log("-- clearBTN --");
+                $('#playerForm')[0].reset();
+            });
         },
-        // Clear Player Registration
-        clearPlayerReg: function() {
+        // ======= Enable Add New Player =======
+        addNewPlayer: function() {
+            console.log("== addNewPlayer ==");
+            var playerName = $('#playerName').val();
+            // ===== Player Instance ====
+            var nextPlayer = new this.Player(playerName);
+            this.myPlayers.push(nextPlayer);
+            console.log(this.myPlayers[this.myPlayers.length - 1]);
+            // createPlayerCard();
         },
-        // Enable Game Start
+        // ======= Player Constructor =======
+        Player: function(playerName) {
+            console.log("== Player ==");
+            this.playerName = playerName;
+        },
+        createPlayerCard: function() {
+            console.log("== createPlayerCard ==");
+            var playerBoard = $('#playerBoard');
+            for (var i = 0; i < myPlayers.length; i++) {
+                nextPlayer = myPlayers[i];
+                console.log("nextPlayer:", nextPlayer);
+            }
+
+        },
+        // ======= Enable Game Start =======
         activateStartBTN: function() {
+            // this.loadPlayerBoard();
+            // this.loadGameBoard();
+            // this.activateGameTimer();
+            // this.activateNewGameBTN();
         },
-        // Enable Game Timer
+        // ===== Enable Game Timer =====
         activateGameTimer:  function() {
         },
         // Enable New Game
         activateNewGameBTN: function() {
         },
-        // Load Game Board
+        // ===== Load Game Board =====
         loadGameBoard: function() {
-            var $div = $("<div>", {id: "foo", "class": "a"});
-            $div.click(function(){ /* ... */ });
-            $("#box").append($div);
+            console.log("== loadGameBoard ==");
+            var self = this;
+            var gameBoard = $('#gameBoard');
+            var activePhrase = this.phrase[0];
+            for (var i = 0; i < activePhrase.length; i++) {
+                nextLetter = activePhrase[i];
+                console.log("nextLetter:", nextLetter);
+                var letterBox = $("<div>", {id: "letter_" + i, class: "letters"});
+                $('#board').append(letterBox);
+                $('#board').children().last().html(nextLetter);
+            };
+        },
+        // Create Turn Method
+        activatePlayerTurn: function() {
+            // this.activateSpinBTN();
         },
         // Enable Spin Button
         activateSpinBTN: function() {
-            displaySpinResult();
+            // displaySpinResult();
         },
         // Round Total Increment
         increseRdTotal: function() {
@@ -62,8 +112,6 @@ $(document).ready(function() {
         // Enable Guess Consonant Button
         activateGuessConsonant: function() {
         },
-        // Create Turn Method
-
         // Display Initial Phrase
         displayInitalPhrase: function() {
         },
@@ -80,14 +128,7 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-    } // CLOSE fortune object
-
+    }; // CLOSE fortune object
+    fortune.Initialize(); // Kick off App
 
 }); // CLOSE jQuery

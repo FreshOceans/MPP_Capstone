@@ -50,3 +50,23 @@
 	width: 70px;
 	background-color: yellow;
 }
+.letters {
+	float: left;
+	height: 100px;
+	width: 100px;
+	background-color: orange;
+	color: white;
+	margin: 2px;
+	text-align: center;
+	line-height: 100px;
+	font-size: 50px;
+}
+#gameBoard {
+	/*display: flex;*/
+	background-color: aqua;
+	height: 500px;
+	width: 500px;
+	/*flex-wrap: wrap;*/
+	margin-top: 10px;
+
+}

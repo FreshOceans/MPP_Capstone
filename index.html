@@ -17,27 +17,30 @@
 		<div id="rules">Link to Rules</div>
 
 		<div id="playerReg">
-			<input type="text" class="register" name="name" value="name">
-			<br>
-			<input type="button" class="register" name="register" value="register">
+			<form id="playerForm">
+				<input type="text" id="playerName" class="register" placeholder="Player Name">
+				<br>
+				<input type="button" id="registerBTN" class="register" name="register" value="Register">
+				<input type="button" id="clearBTN" name="clear" value="Clear">
+			</form>
 		</div>
 
 		<div id="playerBoard">
-			<div id="player1" class="playerScores">
+			<!-- <div id="player1" class="playerCards">
 				<div class="name"></div>
 				<div class="roundTotal"></div>
 				<div class="gameTotal"></div>
-			</div>
-			<div id="player2" class="playerScores">
+			</div> -->
+			<!-- <div id="player2" class="playerCards">
 				<div class="name"></div>
 				<div class="roundTotal"></div>
 				<div class="gameTotal"></div>
-			</div>
-			<div id="player3" class="playerScores">
+			</div> -->
+			<!-- <div id="player3" class="playerCards">
 				<div class="name"></div>
 				<div class="roundTotal"></div>
 				<div class="gameTotal"></div>
-			</div>
+			</div> -->
 		</div>
 
 		<div id="gameInfo">
@@ -62,7 +65,9 @@
 
 		<div id="gameBoard">
 			<div id="board"></div>
-			<div id="guessText"></div>
+			<div id="guessBox">
+				<input type="text" id="guessText" placeholder="Enter Answer">
+			</div>
 		</div>
 
 
