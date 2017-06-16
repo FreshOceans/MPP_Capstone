@@ -74,6 +74,7 @@ $(document).ready(function() {
             fortune.loadGameBoard();
             fortune.displayCategory();
             // this.activateNewGameBTN();
+            fortune.activateGuessBTN();
             });
         },
         // ======= Enable New Game ======
@@ -100,6 +101,28 @@ $(document).ready(function() {
                 $('#board').append(letterBox);
                 $('#board').children().last().html(nextLetter);
             };
+        },
+        // Enable Player Guess Field
+        activateGuessBTN: function() {
+            console.log("== activatePlayerGuess ==");
+            $('#guessBTN').on('click', function(e){
+                console.log('-- guessBTN --');
+                // fortune.playerGuess();
+            });
+        },
+        // Check GuessText with Phrase
+        playerGuess: function() {
+            console.log("== playerGuess ==");
+            var guessText = $('#guessText').text();
+            console.log(guessText);
+            for (var i = 0; i < this.activePhrase.length; i++) {
+                nextLetter = activePhrase[i];
+                console.log("nextLetter:", nextLetter);
+            };
+        },
+
+        // Display Player Guess
+        displayGuess: function() {
         },
         // Create Turn Method
         activatePlayerTurn: function() {
@@ -132,23 +155,6 @@ $(document).ready(function() {
         },
         // Enable Guess Consonant Button
         activateGuessConsonant: function() {
-        },
-        // Display Initial Phrase
-        displayInitalPhrase: function() {
-        },
-        // Enable Player Guess Field
-        activateGuessBTN: function() {
-            console.log("== activatePlayerGuess ==");
-            $('#guessBTN').on('click', function(e){
-                console.log('-- guessBTN --');
-        },
-
-        // Enable Answer Button
-        activateAnswerBTN: function() {
-        },
-        // Display Player Guess
-        displayGuess: function() {
-
         },
         // End Game
         displayWinner: function() {
