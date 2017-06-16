@@ -3,13 +3,20 @@ $(document).ready(function() {
 
     var fortune = {
         // Arrays for items of game
-        vowels: [ "A", "E", "I", "O", "U" ],
-        consonants: [ "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z" ],
+        vowelsArray: [ "A", "E", "I", "O", "U" ],
+        consonantsArray: [ "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z" ],
         wheel_1: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "2500", "Lose a Turn", "1000000"],
-        // wheel_2: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "3500", "Lose a Turn", "1000000"],
-        // wheel_3: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "5000", "Lose a Turn", "1000000"],
         myPlayers: [],
-        phrase: [ "Casablanca", "The Matrix", "Shawkshank Redemption", "Toy Story", "Fight Club", "Inception", "The Dark Knight", "City of God", "The_Departed", "Seven Samurai" ],
+        activePlayer: null,
+        phrasesArray: [
+            { name: "Casablanca", category: "Movies"},
+            { name: "Inception", category: "Movies"},
+            { name: "Toy Story", category: "Movies" },
+            { name: "Soccer", category: "Sports"},
+            { name: "Tennis", category: "Sports"}
+        ],
+        activePhrase: null,
+        guesesArray: [],
         // ======= Initialize App =========
         Initialize: function() {
             console.log("== Initialize ==");
@@ -36,13 +43,15 @@ $(document).ready(function() {
             var nextPlayer = new fortune.Player(playerName);
             // console.log(this.myPlayers[this.myPlayers.length - 1]);
             console.log(fortune.myPlayers);
-            this.activateStartBTN();
+            if (fortune.myPlayers.length < 1) {
+                this.activateStartBTN();
+            };
+            fortune.myPlayers.push(nextPlayer);
         },
         // ======= Player Constructor =======
         Player: function(playerName) {
             // console.log("== Player ==");
             this.playerName = playerName;
-            fortune.myPlayers.push(this);
         },
         createPlayerCard: function() {
             // console.log("== createPlayerCard ==");
@@ -63,31 +72,27 @@ $(document).ready(function() {
                 console.log('-- startBTN --');
             fortune.createPlayerCard();
             fortune.loadGameBoard();
-            fortune.loadCategory();
-            // fortune.activateGameTimer();
+            fortune.displayCategory();
             // this.activateNewGameBTN();
             });
         },
-        // ===== Enable Game Timer =====
-        // activateGameTimer: function() {
-        //         $('#timer').countdowntimer({
-		//         minutes = 30‚
-        //         seconds = 00‚
-        //         size = "lg"
-	    //     });
-        // }),
         // ======= Enable New Game ======
         activateNewGameBTN: function() {
         },
         // ======= Load Category =======
-        loadCategory: function() {
+        displayCategory: function() {
             console.log("== loadCategory ==");
-
+            var activeCategory = fortune.activePhrase.category;
+            $('#category').html("<p>" + activeCategory + "</p>");
         },
         // ===== Load Game Board =====
         loadGameBoard: function() {
             console.log("== loadGameBoard ==");
-            var activePhrase = this.phrase[0];
+            var phraseIndex = Math.floor(Math.random() * fortune.phrasesArray.length) + 1;
+            console.log(phraseIndex);
+            var activePhrase = fortune.phrasesArray[phraseIndex].name;
+            console.log("activePhrase:", activePhrase);
+            fortune.activePhrase = fortune.phrasesArray[phraseIndex];
             for (var i = 0; i < activePhrase.length; i++) {
                 nextLetter = activePhrase[i];
                 console.log("nextLetter:", nextLetter);
@@ -105,16 +110,16 @@ $(document).ready(function() {
             // displaySpinResult();
         },
         // Round Total Increment
-        increseRdTotal: function() {
+        increaseRdTotal: function() {
         },
         // Game Total Increment
-        increseGameTotal: function() {
+        increaseGameTotal: function() {
         },
         // Round Total Decrement
-        decreseRdTotal: function() {
+        decreaseRdTotal: function() {
         },
         // Game Total Decrement
-        decreseGameTotal: function() {
+        decreaseGameTotal: function() {
         },
         // Enable Solve the Puzzle Button
         activateSolveBTN: function() {
@@ -132,14 +137,18 @@ $(document).ready(function() {
         displayInitalPhrase: function() {
         },
         // Enable Player Guess Field
-        activatePlayerGuess: function() {
-            // activateAnswerBTN();
+        activateGuessBTN: function() {
+            console.log("== activatePlayerGuess ==");
+            $('#guessBTN').on('click', function(e){
+                console.log('-- guessBTN --');
         },
+
         // Enable Answer Button
         activateAnswerBTN: function() {
         },
         // Display Player Guess
         displayGuess: function() {
+
         },
         // End Game
         displayWinner: function() {
