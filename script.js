@@ -17,65 +17,76 @@ $(document).ready(function() {
         },
         // ====== Enable User Interaction =======
         activateUserInterface: function() {
-            console.log("== activateUserInterface ");
+            // console.log("== activateUserInterface ");
             var self = this;
             $('#registerBTN').on('click', function(e){
-                console.log('-- registerBTN --');
+                // console.log('-- registerBTN --');
                 self.addNewPlayer();
             });
             $('#clearBTN').on('click', function(e){
-                console.log("-- clearBTN --");
+                // console.log("-- clearBTN --");
                 $('#playerForm')[0].reset();
             });
         },
         // ======= Enable Add New Player =======
         addNewPlayer: function() {
-            console.log("== addNewPlayer ==");
+            // console.log("== addNewPlayer ==");
             var playerName = $('#playerName').val();
             // ===== Player Instance ====
-            var nextPlayer = new this.Player(playerName);
-            this.myPlayers.push(nextPlayer);
-            console.log(this.myPlayers[this.myPlayers.length - 1]);
-            this.createPlayerCard();
+            var nextPlayer = new fortune.Player(playerName);
+            // console.log(this.myPlayers[this.myPlayers.length - 1]);
+            console.log(fortune.myPlayers);
             this.activateStartBTN();
         },
         // ======= Player Constructor =======
         Player: function(playerName) {
-            console.log("== Player ==");
+            // console.log("== Player ==");
             this.playerName = playerName;
+            fortune.myPlayers.push(this);
         },
         createPlayerCard: function() {
-            console.log("== createPlayerCard ==");
+            // console.log("== createPlayerCard ==");
             var playerBoard = $('#playerBoard');
             for (var i = 0; i < this.myPlayers.length; i++) {
                 nextPlayer = this.myPlayers[i];
-                console.log("nextPlayer:", nextPlayer);
+                // console.log("nextPlayer:", nextPlayer);
                 var playerBox = $("<div>", {id: "player_" + i, class: "players"});
                 $('#playerBoard').append(playerBox);
-                $('#playerBoard').children().last().html(nextPlayer);
+                $('#playerBoard').children().last().html(nextPlayer.playerName);
             };
         },
         // ======= Enable Game Start =======
         activateStartBTN: function() {
-            console.log("== activateStartBTN ==");
+            // console.log("== activateStartBTN ==");
             var self = this;
             $('#startBTN').on('click', function(e){
                 console.log('-- startBTN --');
-            self.loadGameBoard();
-            // this.activateGameTimer();
+            fortune.createPlayerCard();
+            fortune.loadGameBoard();
+            fortune.loadCategory();
+            // fortune.activateGameTimer();
             // this.activateNewGameBTN();
             });
         },
         // ===== Enable Game Timer =====
-        activateGameTimer: function() {
-        },
-        // Enable New Game
+        // activateGameTimer: function() {
+        //         $('#timer').countdowntimer({
+		//         minutes = 30‚
+        //         seconds = 00‚
+        //         size = "lg"
+	    //     });
+        // }),
+        // ======= Enable New Game ======
         activateNewGameBTN: function() {
+        },
+        // ======= Load Category =======
+        loadCategory: function() {
+            console.log("== loadCategory ==");
+
         },
         // ===== Load Game Board =====
         loadGameBoard: function() {
             console.log("== loadGameBoard ==");
-            // var gameBoard = $('#gameBoard');
             var activePhrase = this.phrase[0];
             for (var i = 0; i < activePhrase.length; i++) {
                 nextLetter = activePhrase[i];
