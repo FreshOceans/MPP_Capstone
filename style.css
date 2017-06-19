@@ -84,6 +84,7 @@ p {
 /*======= GameBoard =======*/
 .letters {
 	float: left;
+	visibility: hidden;
 	height: 100px;
 	width: 100px;
 	background-color: orange;

@@ -16,6 +16,7 @@ $(document).ready(function() {
             { name: "Tennis", category: "Sports"}
         ],
         activePhrase: null,
+        currentLetter: null,
         guesesArray: [],
         // ======= Initialize App =========
         Initialize: function() {
@@ -107,18 +108,27 @@ $(document).ready(function() {
             console.log("== activatePlayerGuess ==");
             $('#guessBTN').on('click', function(e){
                 console.log('-- guessBTN --');
-                // fortune.playerGuess();
+                fortune.playerGuess();
             });
         },
         // Check GuessText with Phrase
         playerGuess: function() {
             console.log("== playerGuess ==");
-            var guessText = $('#guessText').text();
+            var guessText = $('#guessText').val();
             console.log(guessText);
+            // get current cash total
             for (var i = 0; i < this.activePhrase.length; i++) {
-                nextLetter = activePhrase[i];
-                console.log("nextLetter:", nextLetter);
+                checkLetter = activePhrase[i];
+                console.log("checkLetter:", checkLetter);
+                if (checkLetter == guessText) {
+                    // reveal letter
+                    // math total rd cash increase by spin value
+                };
+                if (checkLetter == " ") {
+                    // change css to background-color
+                };
             };
+            // get current cash value, if increased then spin, else same next player turn.
         },
 
         // Display Player Guess
