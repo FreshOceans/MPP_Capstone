@@ -13,7 +13,9 @@ $(document).ready(function() {
             { name: "inception", category: "Movies"},
             { name: "psycho", category: "Movies" },
             { name: "gozilla", category: "Movies"},
-            { name: "scarface", category: "Movies"}
+            { name: "scarface", category: "Movies"},
+            { name: "titanic", category: "Movies"},
+            { name: "underworld", category: "Movies"}
         ],
         activePhrase: null,
         currentLetter: null,
@@ -114,7 +116,7 @@ $(document).ready(function() {
         // ===== Load Game Board =====
         loadGameBoard: function() {
             console.log("== loadGameBoard ==");
-            var phraseIndex = Math.floor(Math.random() * fortune.phrasesArray.length) + 1;
+            var phraseIndex = Math.floor(Math.random() * fortune.phrasesArray.length);
             console.log(phraseIndex);
             var activePhrase = fortune.phrasesArray[phraseIndex].name;
             console.log("activePhrase:", activePhrase);
