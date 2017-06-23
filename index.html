@@ -13,8 +13,8 @@
 
     <!-- ======= ======= ======= body ======= ======= ======= -->
 	<body>
-		<div id="gameTitle">Fortune favors Mike</div>
-		<div id="rules">Link to Rules</div>
+		<div id="gameTitle">Fortune Favors the young</div>
+		<!-- <div id="rules">Link to Rules</div> -->
 
 		<div id="playerReg">
 			<form id="playerForm">
@@ -24,31 +24,35 @@
 				<br>
 				<input type="button" id="clearBTN" name="clear" value="Clear">
 			</form>
+			<div id="start">
+				<input type="button" id="startBTN" name="start" value="Start Game">
+			</div>
+			<div id="newGame">
+				<input type="button" id="newGameBTN" name="new game" value="New Game">
+			</div>
 		</div>
 
 		<div id="playerBoard"></div>
 
-		<div id="gameInfo">
-			<div id="start">
-				<input type="button" id="startBTN" name="start" value="Start Game">
-			</div>
-			<div id="category"></div>
-			<div id="timer"></div>
-		</div>
 
-		<div id="gameButtons">
-			<div id="phase1">
-				<input type="button" name="spin" id="spin" value="Spin">
-				<input type="button" name="solve" id="solve" value="Solve the Puzzle">
+
+		<div id="gameInfo">
+			<div id="gameButtons">
+				<div id="phase1">
+					<input type="button" name="spin" id="spin" value="Spin">
+					<input type="button" name="solve" id="solve" value="Solve the Puzzle">
+				</div>
+				<div id="phase2">
+					<div id="spinResult"></div>
+					<input type="button" name="buyVowel" id="buyVowel" value="Buy Vowel">
+					<input type="button" name="guessConsonant" id="guessConsonant" value="Guess Consonant">
+				</div>
 			</div>
-			<div id="phase2">
-				<div id="spinResult"></div>
-				<input type="button" name="buyVowel" id="buyVowel" value="Buy Vowel">
-				<input type="button" name="guessConsonant" id="guessConsonant" value="Guess Consonant">
-			</div>
+			<!-- <div id="timer"></div> -->
 		</div>
 
 		<div id="gameBoard">
+			<div id="category"></div>
 			<div id="board"></div>
 		</div>
 

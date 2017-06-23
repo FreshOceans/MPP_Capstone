@@ -54,6 +54,7 @@ $(document).ready(function() {
             // console.log("== Player ==");
             this.playerName = playerName;
         },
+        // ======= Create Player Board with Scores ======
         createPlayerCard: function() {
             // console.log("== createPlayerCard ==");
             var playerBoard = $('#playerBoard');
@@ -65,6 +66,17 @@ $(document).ready(function() {
                 $('#playerBoard').children().last().html(nextPlayer.playerName);
             };
         },
+        createPlayerScore: function() {
+            // console.log("== createPlayerCard ==");
+            var playerBoard = $('#playerBoard');
+            for (var i = 0; i < this.myPlayers.length; i++) {
+                nextPlayer = this.myPlayers[i];
+                // console.log("nextPlayer:", nextPlayer);
+                var playerScore = $("<div>", {id: "playerScore_" + i, class: "playerScores"});
+                $('#playerBoard').append(playerScore);
+                $('#playerBoard').children().last().html('Score: 0');
+            };
+        },
         // ======= Enable Game Start =======
         activateStartBTN: function() {
             // console.log("== activateStartBTN ==");
@@ -72,14 +84,25 @@ $(document).ready(function() {
             $('#startBTN').on('click', function(e){
                 console.log('-- startBTN --');
             fortune.createPlayerCard();
+            fortune.createPlayerScore();
             fortune.loadGameBoard();
             fortune.displayCategory();
-            // this.activateNewGameBTN();
+            fortune.activateNewGameBTN();
             fortune.activateGuessBTN();
             });
         },
         // ======= Enable New Game ======
         activateNewGameBTN: function() {
+            console.log("== activateNewGameBTN ==");
+            $('#newGameBTN').on('click', function(e){
+                console.log('-- newGameBTN --');
+                fortune.newGame();
+            });
+        },
+        // ====== New Game (Reset) =======
+        newGame: function() {
+            console.log("== newGame ==");
+            location.reload();
         },
         // ======= Load Category =======
         displayCategory: function() {
