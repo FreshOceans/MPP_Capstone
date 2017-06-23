@@ -2,22 +2,23 @@ $(document).ready(function() {
   console.log("jQuery ready");
 
     var fortune = {
-        // Arrays for items of game
+        // ======= Arrays for items of game=======
         vowelsArray: [ "A", "E", "I", "O", "U" ],
         consonantsArray: [ "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z" ],
         wheel_1: ["Bankrupt", "Bankrupt", "800", "800", "900", "900", "900", "600", "600", "700", "700", "700", "550", "650", "650", "2500", "Lose a Turn", "1000000"],
         myPlayers: [],
         activePlayer: null,
         phrasesArray: [
-            { name: "Casablanca", category: "Movies"},
-            { name: "Inception", category: "Movies"},
-            { name: "Toy Story", category: "Movies" },
-            { name: "Soccer", category: "Sports"},
-            { name: "Tennis", category: "Sports"}
+            { name: "casablanca", category: "Movies"},
+            { name: "inception", category: "Movies"},
+            { name: "psycho", category: "Movies" },
+            { name: "gozilla", category: "Movies"},
+            { name: "scarface", category: "Movies"}
         ],
         activePhrase: null,
         currentLetter: null,
         guesesArray: [],
+
         // ======= Initialize App =========
         Initialize: function() {
             console.log("== Initialize ==");
@@ -121,12 +122,14 @@ $(document).ready(function() {
             for (var i = 0; i < activePhrase.length; i++) {
                 nextLetter = activePhrase[i];
                 console.log("nextLetter:", nextLetter);
-                var letterBox = $("<div>", {id: "letter_" + i, class: "letters"});
+                // var letterBox = $("<div>", {id: "letter_" + i, class: "letters"});
+                var letterBox = "<div id='letter_" + i + "'class='letterBox'><p id='text_" + i + "'class='letter'>" + nextLetter + "</p></div>"
+                // console.log(letterBox);
                 $('#board').append(letterBox);
-                $('#board').children().last().html(nextLetter);
+                // $('#board').children().last().html(nextLetter);
             };
         },
-        // Enable Player Guess Field
+        // ======= Enable Player Guess Field =======
         activateGuessBTN: function() {
             console.log("== activatePlayerGuess ==");
             $('#guessBTN').on('click', function(e){
@@ -134,64 +137,23 @@ $(document).ready(function() {
                 fortune.playerGuess();
             });
         },
-        // Check GuessText with Phrase
+        // ======= Check GuessText with Phrase =======
         playerGuess: function() {
             console.log("== playerGuess ==");
             var guessText = $('#guessText').val();
-            console.log(guessText);
+            console.log("guessText:", guessText);
+            console.log("fortune.activePhrase:", fortune.activePhrase);
             // get current cash total
-            for (var i = 0; i < this.activePhrase.length; i++) {
-                checkLetter = activePhrase[i];
+            for (var i = 0; i < fortune.activePhrase.name.length; i++) {
+            // console.log("fortune.activePhrase:", fortune.activePhrase);
+                var checkLetter = fortune.activePhrase.name[i];
                 console.log("checkLetter:", checkLetter);
-                if (checkLetter == guessText) {
-                    // reveal letter
-                    // math total rd cash increase by spin value
-                };
-                if (checkLetter == " ") {
-                    // change css to background-color
+                if (guessText == checkLetter) {
+                    $('#board').find('#text_' + i).css('visibility', 'visible');
                 };
             };
-            // get current cash value, if increased then spin, else same next player turn.
-        },
-
-        // Display Player Guess
-        displayGuess: function() {
-        },
-        // Create Turn Method
-        activatePlayerTurn: function() {
-            // this.activateSpinBTN();
-        },
-        // Enable Spin Button
-        activateSpinBTN: function() {
-            // displaySpinResult();
-        },
-        // Round Total Increment
-        increaseRdTotal: function() {
-        },
-        // Game Total Increment
-        increaseGameTotal: function() {
-        },
-        // Round Total Decrement
-        decreaseRdTotal: function() {
-        },
-        // Game Total Decrement
-        decreaseGameTotal: function() {
-        },
-        // Enable Solve the Puzzle Button
-        activateSolveBTN: function() {
-        },
-        // Display Spin Result
-        displaySpinResult: function() {
-        },
-        // Enable Buy Vowel Button
-        activateVowelBTN: function() {
-        },
-        // Enable Guess Consonant Button
-        activateGuessConsonant: function() {
-        },
-        // End Game
-        displayWinner: function() {
         }
+
 
 
 
@@ -200,3 +162,17 @@ $(document).ready(function() {
     fortune.Initialize(); // Kick off App
 
 }); // CLOSE jQuery
+
+
+
+
+// console.log();
+// reveal letter
+// math total rd cash increase by spin value
+// };
+//         // if (checkLetter == " ") {
+//         //     $('#letter_' + i).css('visibility', 'hidden');
+//         //     // change css to background-color
+//         // };
+//     };
+//     // get current cash value, if increased then spin, else same next player turn.

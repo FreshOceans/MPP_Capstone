@@ -3,10 +3,10 @@
 	text-align: center;
 	height: 50px;
 	font-size: 20px;
-	/*background-color: green;*/
 	padding-top: 5px;
 	color: black;
 }
+
 /*===== Link to Rules ======*/
 #rules {
 	text-align: center;
@@ -14,13 +14,12 @@
 	background-color: aqua;
 	margin-top: 5px;
 }
+
 /*======= Player Registration =======*/
 #playerReg {
 	float: left;
 	height: 150px;
 	width: 150px;
-	/*border: solid;*/
-	/*border-color: red;*/
 	background-color: grey;
 	margin: 10px;
 	text-align: center;
@@ -28,6 +27,7 @@
 .register {
 	margin: 7px;
 }
+
 /*======= Player Score Cards =======*/
 #playerBoard {
 	float: left;
@@ -57,9 +57,6 @@
 	margin-left: 14px;
 	text-align: center;
 }
-/*#player1, #player2, #player3 {*/
-	/*margin: 10px 10px 10px 10px;*/
-/*}*/
 .name, .roundTotal, .gameTotal {
 	height: 30px;
 	width: 125px;
@@ -87,13 +84,13 @@
 	margin: 10px;
 	height: 50px;
 	width: 500px;
-	/*background-color: navy;*/
 }
-p {
+/*p {
 	height: 50px;
+	display: none;
 	width: 150px;
-	color: white;
-}
+	color: black;
+}*/
 /*#timer {
 	height: 100px;
 	width: 150px;
@@ -105,38 +102,37 @@ p {
 #category {
 	height: 50px;
 	width: 100px;
-	/*background-color: red;*/
 	margin: auto;
 	text-align: center;
 }
-.letters {
+.letterBox {
 	float: left;
-	visibility: hidden;
+	border-bottom: solid black 4px;
 	height: 100px;
-	width: 100px;
-	background-color: orange;
+	width: 50px;
 	color: white;
 	margin: 2px;
 	text-align: center;
 	line-height: 100px;
-	font-size: 50px;
+	font-size: 35px;
+	text-transform: uppercase;
+}
+.letter {
+	visibility: hidden;
+	color: black;
 }
 #gameBoard {
 	float: left;
-	/*display: flex;*/
 	background-color: aqua;
 	height: 350px;
-	width: 1000px;
+	width: 800px;
 	margin: 10px;
-	/*flex-wrap: wrap;*/
-	/*margin-top: 10px;*/
 }
+
 /*====== Guess Entry ======*/
 #guessBox {
 	float: left;
 	height: 50px;
 	width: 200px;
-	/*background-color: grey;*/
-	/*margin-top: 10px;*/
 	margin: 10px;
 }
